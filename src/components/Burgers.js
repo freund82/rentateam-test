@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Burger from '../assets/images/Burgers/burger.png'
+
 
 const BurgersSection=styled.section`
 grid-area:burgers;
@@ -113,7 +113,7 @@ function Burgers(){
     return(
         <BurgersSection>
             <BurgersTitle>Бургеры</BurgersTitle>
-            <BurgersCards>{burgerItem.map((item, index)=><div><BurgerCard key={index}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<BurgerImage src={Burger} alt=""></BurgerImage><p>{item.name}</p><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
+            <BurgersCards>{burgerItem.map((item, index)=><div><BurgerCard key={index}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<BurgerImage src={item.src} alt=""></BurgerImage><p>{item.name}</p><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
         </BurgersSection>
     )
 }
