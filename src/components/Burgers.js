@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-
+import AddItem from './AddItem';
+import MakeOder from './MakeOder';
 
 const BurgersSection=styled.section`
 grid-area:burgers;
@@ -34,6 +35,24 @@ const BurgerImage=styled.img`
     max-width:19.2rem;
 `;
 
+const BurgerName=styled.p`
+    margin-top:4rem;
+    margin-bottom:-1rem;
+    color:#9D9D9D;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+`;
+
+const BurgerPrice=styled.p`
+    font-size:3.2rem;
+    font-style: regular;
+    font-weight: 400;
+    color:#E4002B;
+`;
+
 const BurgerCard=styled.div`
     position:relative;
     z-index:100;
@@ -50,15 +69,13 @@ const BurgerCard=styled.div`
         ${BurgerImage}{
             max-width:21.6rem;
         }
+        ${BurgerName}{
+            color:#000;
+        }
     }
 `;
 
-const BurgerPrice=styled.p`
-    font-size:3.2rem;
-    font-style: regular;
-    font-weight: 400;
-    color:#E4002B;
-`;
+
 
 const New=styled.span`
     position:absolute;
@@ -113,7 +130,7 @@ function Burgers(){
     return(
         <BurgersSection>
             <BurgersTitle>Бургеры</BurgersTitle>
-            <BurgersCards>{burgerItem.map((item, index)=><div><BurgerCard key={index}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<BurgerImage src={item.src} alt=""></BurgerImage><p>{item.name}</p><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
+            <BurgersCards>{burgerItem.map((item, index)=><div key={index}><BurgerCard key={index}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<div className="card"><MakeOder></MakeOder><AddItem></AddItem></div><BurgerImage src={item.src} alt=""></BurgerImage><BurgerName>{item.name}</BurgerName><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
         </BurgersSection>
     )
 }

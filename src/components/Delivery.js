@@ -70,12 +70,43 @@ const ButtonGetOder=styled.button`
     }
 `;
 
-const AddressBlock=styled.div`
-margin-top:4.8rem;
-font-family: 'Barlow Condensed', sans-serif;
-font-size:3.2rem;
+
+const DeliveryInfoBlock=styled.div`
+    display:none;
+    position:relative;
+    z-index:100;
 `;
 
+const DeliveryInfo=styled.p`
+    width:46.3rem;
+    height:4.6rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Cabin Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    text-align: center;
+    background:#000;
+    color:#fff;
+    border-radius:0.8rem;
+`;
+
+const Beak=styled.span`
+    position:absolute;
+    top:-20%;
+    left:29%;
+    z-index:1000;
+    display:block;
+    width: 0;
+    height: 0;
+    border-bottom: 1rem solid #000;
+    border-left: 1.2rem solid transparent;
+    border-right: 1.2rem solid transparent;
+    border-radius:1rem;
+`;
 const Input=styled.input`
     width:21rem;
     height:4.2rem;
@@ -85,6 +116,14 @@ const Input=styled.input`
     border:none;
     font-size:1.6rem;
     padding-left:1.6rem;
+`;
+const AddressBlock=styled.div`
+margin-top:4.8rem;
+font-family: 'Barlow Condensed', sans-serif;
+font-size:3.2rem;
+&:hover ${DeliveryInfoBlock}{
+    display:block;
+}
 `;
 
 function Delivery(){
@@ -97,6 +136,10 @@ function Delivery(){
             </ButtonsBlock>
             <AddressBlock>
             <span style={{verticalAlign:"bottom", marginRight:"1.2rem"}}>Улица</span><Input type="text" placeholder='Остоженка'></Input><span style={{verticalAlign:"bottom", marginLeft:"4.3rem", marginRight:"1.2rem"}}>Дом</span><Input type="text" placeholder='Остоженка'></Input>
+                <DeliveryInfoBlock>
+                    <DeliveryInfo>Нужно заполнить для оформления доставки</DeliveryInfo>
+                    <Beak></Beak>
+                </DeliveryInfoBlock>
             </AddressBlock>
             </TitleBlock>
         </DeliverySection>

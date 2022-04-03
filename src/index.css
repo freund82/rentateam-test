@@ -29,5 +29,12 @@ body {
   grid-template-areas:". header ."
                       ". delivery ."
                       ". main ."
-                      "burgers burgers burgers";
+                      "burgers burgers burgers"
+                      ". twisters ."
+                      "chicken chicken chicken"
+                      ". footer .";
+}
+
+.card:hover .AddItem{
+  display:block;
 }
