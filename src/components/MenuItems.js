@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 
 const MenuSection=styled.div`
     grid-area:main;
+    
 `;
 
 const Menu=styled.nav`

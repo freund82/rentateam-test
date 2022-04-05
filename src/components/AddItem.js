@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseCounter, increaseCounter } from '../redux/counterRedux/counter.actions';
+
+
+
+
 
 const AddItemMenu=styled.div`
     display:none;
@@ -57,15 +63,37 @@ const Amount=styled.span`
     line-height: 24px;
 `;
 
-const delBtn=document.getElementById("del")
+function AddItem(props){
+  
+/*useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(json => dispatch(increaseCounter(json)))
+})*/
 
-function AddItem(){
+    let dispatch=useDispatch()
+
+    let increaseBtn=()=>{
+        dispatch(increaseCounter())
+    }
+
+    let decreaseBtn=()=>{
+        dispatch(decreaseCounter())
+    }
+
+    //view data from store
+    let viewCounter=useSelector((state)=>{
+        return state.counterReducer.count
+        
+    })
+
     return(
-        <AddItemMenu className="AddItem">
-            <DeleteItem id="del"></DeleteItem>
-            <Amount id="counter"></Amount>
-            <Add></Add>
-        </AddItemMenu>
+        
+        <AddItemMenu id={props.id} className="AddItem">
+            <DeleteItem onClick={decreaseBtn}></DeleteItem>
+            <Amount>{viewCounter}</Amount>
+            <Add onClick={increaseBtn}></Add>
+    </AddItemMenu>
     )
 }
 
