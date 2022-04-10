@@ -38,3 +38,8 @@ body {
 .card:hover .AddItem{
   display:block;
 }
+
+.active{
+  color:red;
+  font-size:10rem;
+}

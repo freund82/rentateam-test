@@ -1,6 +1,9 @@
 import styled from 'styled-components'
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseCounter, increaseCounter } from '../redux/counterRedux/counter.actions';
+import {increaseCounter } from '../redux/BourgersData/bourgers.actions'
+import { setBourgers} from '../redux/BourgersData/bourgers.actions'
+
 
 
 
@@ -65,34 +68,33 @@ const Amount=styled.span`
 
 function AddItem(props){
   
-/*useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-  .then(response => response.json())
-  .then(json => dispatch(increaseCounter(json)))
-})*/
 
     let dispatch=useDispatch()
 
     let increaseBtn=()=>{
-        dispatch(increaseCounter())
+        
+        dispatch(increaseCounter(props))
     }
 
-    let decreaseBtn=()=>{
+    /*let decreaseBtn=()=>{
+       
         dispatch(decreaseCounter())
-    }
+    }*/
+  
 
     //view data from store
     let viewCounter=useSelector((state)=>{
-        return state.counterReducer.count
-        
+        return state.bourgersReducer.state
     })
+
+    
 
     return(
         
-        <AddItemMenu id={props.id} className="AddItem">
-            <DeleteItem onClick={decreaseBtn}></DeleteItem>
-            <Amount>{viewCounter}</Amount>
-            <Add onClick={increaseBtn}></Add>
+        <AddItemMenu className="AddItem">
+            <DeleteItem ></DeleteItem>
+            <Amount >{viewCounter}</Amount>
+            <Add onClick={increaseBtn} ></Add>
     </AddItemMenu>
     )
 }

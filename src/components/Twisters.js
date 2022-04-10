@@ -109,7 +109,7 @@ function Twisters(){
     return(
         <TwistersSection>
             <TwistersTitle>Твистеры</TwistersTitle>
-            <TwistersCards>{twistersItem.map((item, index)=><div key={index}><TwisterCard className="card" key={index}><MakeOder></MakeOder><AddItem></AddItem>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<TwisterImage src={item.src} alt=""></TwisterImage><p>{item.name}</p><TwistersPrice>{item.price}&#8381;</TwistersPrice></TwisterCard></div>)}</TwistersCards>
+            <TwistersCards>{twistersItem.map((item, index)=><div key={index}><TwisterCard className="card" key={index}><MakeOder name={item.name} price={item.price}></MakeOder><AddItem></AddItem>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<TwisterImage src={item.src} alt=""></TwisterImage><p>{item.name}</p><TwistersPrice>{item.price}&#8381;</TwistersPrice></TwisterCard></div>)}</TwistersCards>
         </TwistersSection>
     )
 }

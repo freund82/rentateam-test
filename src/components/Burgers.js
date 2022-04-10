@@ -1,4 +1,8 @@
 import styled from 'styled-components'
+import { useEffect } from 'react';
+import { setBourgers} from '../redux/BourgersData/bourgers.actions'
+import { useDispatch, useSelector } from 'react-redux'
+
 import AddItem from './AddItem';
 import MakeOder from './MakeOder';
 
@@ -114,7 +118,7 @@ const Hit=styled.span`
     padding-bottom:1.3rem;
 `;
 
-export const burgerItem=[
+/*export const burgerItem=[
     {id:1, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:100, new:true, hit:false},
     {id:2, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:150, new:false, hit:true},
     {id:3, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:250, new:false, hit:false},
@@ -122,17 +126,28 @@ export const burgerItem=[
     {id:5, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:230, new:false, hit:false},
     {id:6, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:190, new:false, hit:true},
     {id:7, src:"../assets/images/Burgers/burger.png", name:"Бургер", price:210, new:false, hit:false},
-]
+]*/
 
 function Burgers(){
 
-    
-    
+    let dispatch=useDispatch()
+
+    useEffect(()=>{
+        fetch('http://localhost:3000/BourgersData.json')
+       .then((res)=>res.json()).then(
+           data=>dispatch(setBourgers(data.map(value=>({...value, count:1})))))
+     }, [])
+
+     let getBourgers=useSelector((state)=>{
+        return state.bourgersReducer.data
+        })
 
     return(
         <BurgersSection>
             <BurgersTitle>Бургеры</BurgersTitle>
-            <BurgersCards>{burgerItem.map((item, index)=><div key={index}><BurgerCard id={item.id}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<div className="card"><MakeOder></MakeOder><AddItem id={item.id} name={item.name} price={item.price}></AddItem></div><BurgerImage src={item.src} alt=""></BurgerImage><BurgerName>{item.name}</BurgerName><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
+            <BurgersCards>{getBourgers.map((item, index)=><div key={index}><BurgerCard id={item.id}>{(item.new==="true")?<New>Новое</New>:null}{(item.hit==="true")?<Hit>Хит</Hit>:null}<div className="card"><MakeOder name={item.name} price={item.price}></MakeOder><AddItem {...item}></AddItem></div><BurgerImage src={item.src} alt=""></BurgerImage><BurgerName>{item.name}</BurgerName><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>
+            {/*<BurgersCards><div key={getBourgers.id}><BurgerCard id={getBourgers.id}>{(getBourgers.new===true)?<New>Новое</New>:null}{(getBourgers.hit===true)?<Hit>Хит</Hit>:null}<div className="card"><MakeOder></MakeOder><AddItem id={getBourgers.id} name={getBourgers.name} price={getBourgers.price}></AddItem></div><BurgerImage src={getBourgers.src} alt=""></BurgerImage><BurgerName>{getBourgers.name}</BurgerName><BurgerPrice>{getBourgers.price}&#8381;</BurgerPrice></BurgerCard></div></BurgersCards>*/}
+            {/*<BurgersCards>{burgerItem.map((item, index)=><div key={index}><BurgerCard id={item.id}>{(item.new===true)?<New>Новое</New>:null}{(item.hit===true)?<Hit>Хит</Hit>:null}<div className="card"><MakeOder></MakeOder><AddItem id={item.id} name={item.name} price={item.price}></AddItem></div><BurgerImage src={item.src} alt=""></BurgerImage><BurgerName>{item.name}</BurgerName><BurgerPrice>{item.price}&#8381;</BurgerPrice></BurgerCard></div>)}</BurgersCards>*/}
         </BurgersSection>
     )
 }

@@ -6,14 +6,18 @@ import Burgers from "./components/Burgers";
 import Twisters from "./components/Twisters";
 import Chicken from "./components/Chicken";
 import Footer from "./components/Footer";
-import {store} from "./redux/store"
-import {Provider} from "react-redux"
+import Test from "./components/Test";
+import Cart from './components/Cart'
+
+
 
 
 
 function App() {
+
+ 
   return (
-    <Provider store={store}>
+    
    <div className="container">
      <Router>
      <HeaderBlock></HeaderBlock>
@@ -23,9 +27,10 @@ function App() {
      <Twisters></Twisters>
      <Chicken></Chicken>
      <Footer></Footer>
+     <Test></Test>
+     <Cart></Cart>
      </Router>
    </div>
-   </Provider>
   );
 }
 

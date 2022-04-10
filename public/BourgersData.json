@@ -1,0 +1,24 @@
+[
+    {
+    "id":"1", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"100", "new":"true", "hit":"false"
+    },
+    {
+    "id":"2", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"150", "new":"false", "hit":"true"
+    },
+    {
+    "id":"3", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"250", "new":"false", "hit":"false"
+    },
+    {
+    "id":"4", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"220", "new":"false", "hit":"false"
+    },
+    {
+    "id":"5", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"230", "new":"false", "hit":"false"
+    },
+    {
+    "id":"6", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"190", "new":"false", "hit":"true"
+    },
+    {
+    "id":"7", "src":"../assets/images/Burgers/burger.png", "name":"Бургер", "price":"210", "new":"false", "hit":"false"
+    }
+]
+

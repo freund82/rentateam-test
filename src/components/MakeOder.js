@@ -32,9 +32,18 @@ const Add=styled.span`
     }
 `;
 
-function MakeOder(){
+export let cart=[]
+
+function MakeOder(props){
+    
+   const addToCart=()=>{
+        cart.push({
+            name:props.name,
+            price:props.price})
+    }
+
     return(
-        <MakeOderMenu className="MakeOder">
+        <MakeOderMenu onClick={addToCart} className="MakeOder">
             <Add></Add>
         </MakeOderMenu>
     )
